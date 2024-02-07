@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selection = 'recipes';
 
+  displaySelection(selection: string) {
+   this.selection = selection;
+  }
 }

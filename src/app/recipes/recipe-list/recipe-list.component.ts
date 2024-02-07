@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -7,8 +7,13 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
+ @Output('recipeSelected') recipeSelected = new EventEmitter<Recipe>();
  recipes: Recipe[] = [
  new Recipe('Chipotle Pinto Bean Tacos','Chipotle pinto bean tacos is a Plant-Based, easy to make and a high protein dish','https://veganheaven.org/wp-content/uploads/2019/02/Veg-Recipes-10.jpg'),
  new Recipe('Mexican Quinoa','This one pan Mexican quinoa with black beans and corn','https://veganheaven.org/wp-content/uploads/2019/02/Veg-Recipes-16.jpg')
  ];
+
+ onRecipeSelected(recipe: Recipe) {
+   this.recipeSelected.emit(recipe);
+ }
 }
